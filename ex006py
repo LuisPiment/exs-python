@@ -1,0 +1,18 @@
+from ex006_1 import *
+from tkinter import *
+
+
+#class Janela:
+ #   def __init__(self,raiz1):
+  #      self.fr1=Frame(raiz1)
+   #     self.fr1.pack()
+        
+
+
+
+raizzz=Tk()
+#Janela(raiz)
+raizzz.geometry("860x450+300+30")
+raizzz.title("Jogo de par ou impar")
+raizzz.iconbitmap("ex006.2/naruto2.ico")
+raizzz.mainloop

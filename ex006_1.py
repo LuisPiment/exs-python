@@ -10,11 +10,21 @@ fonte1=("Time New Roman",40,"bold")
 fonte2=("Verdana",27,"bold")
 fonte3=("Verdana",15,"bold")
 fonte4=("Verdana",100,"bold")
-def par_impar(num1,num2):
-    s=num1+num2
+def par_impar(cpu,p1,pi2):
+    u=" "
+
+    s=p1+cpu
     if s%2==1:
-        pi=("Impar")
+        pi=("impar")
     else:
-        pi=("Par")
-    return pi
+        pi=("par")
+    if pi[0]==pi2[0]:
+        t=f"O player 1 Ganhou pois a soma deu {s}"
+        u="p"
+    else:
+        t=f"O player 1 perdeu pois a soma deu {s}"
+        u="c"
+    return t,u
+    
+
 

@@ -1,4 +1,4 @@
-from Ferramentas import cabeçalho
+from Ferramentas import cabeçalhototal
 import datetime
 at=datetime.date.today().year
 class Usuario():
@@ -9,10 +9,10 @@ class Usuario():
         self.data_de_nacimento=data_de_nascimento
         self.email=email
     def des_usuario(self):
-        cabeçalho(f"{'O seu primeiro nome é '}{self.p_nome.title()}\n{'  O seu ultimo nome é '}{self.u_nome.title()}"
+        cabeçalhototal(f"{'O seu primeiro nome é '}{self.p_nome.title()}\n{'  O seu ultimo nome é '}{self.u_nome.title()}"
                   f"\n{'  A sua idade é '}{at-self.data_de_nacimento} \n{'  O seu email é '}{self.email}")
     def saudação(self):
-        cabeçalho(f"{'Ola usario '}{self.p_nome.title()}{',tenha um bom dia'}")
+        cabeçalhototal(f"{'Ola usario '}{self.p_nome.title()}{',tenha um bom dia'}")
 n=[]
 for c in range (0,4):
     n.append(str(input("Digite o sue primeiro nome ")))

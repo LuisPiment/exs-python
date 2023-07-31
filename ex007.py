@@ -20,39 +20,44 @@ class Ponto():
         cabeçalhototal(f"As cordenadas do ponto são: x={self.x} e y={self.y}")
 class Rentagulo(Ponto):
     def __init__(self,altura,largura,x,y):
+        self.c=" "
+        self.u=" "
         self.largura=largura
         self.altura=altura
         super().__init__(x,y)
         self.centrox=self.x + (self.largura/2)
         self.centroy=self.y + (self.altura/2)
+        self.ncentrox=0
+        self.ncentroy=0
     def info1(self):
         cabeçalhototal(f"A altura do rentagulo é {self.altura} e sua largura é de {self.largura}")
     def centro(self):
+        self.u=f"O centro do rentagulo é nas cordenadas x={self.centrox} e y={self.centroy}"
         cabeçalhototal(f"O centro do rentagulo é nas cordenadas x={self.centrox} e y={self.centroy}")
     def mudar(self):
-        while True:
-            c=str(input("Deseja mudar o valor do x e do y?(S/N):")).strip().lower()[0]
-            if c in "s":
-                x1=str(input("Digite o novo valor de x: "))
-                y1=str(input("Digite o novo valor de y: "))
-                x2=x1.isnumeric()
-                y2=y1.isnumeric()
-                if x2==True and y2==True:
-                    print("Mudança feita")
-                    self.x1=int(self.x)
-                    self.y1=int(self.y)
-                    break
-                else:
-                    print("Erro por favor digite novamente os valores")
-            elif c=="n":
+        while self.c not in "ns":
+            self.c=str(input("Deseja mudar o valor do x e do y?(S/N):")).strip().lower()[0]
+            if self.c in "s":
+                while True:
+                    x1=str(input("Digite o novo valor de x: "))
+                    y1=str(input("Digite o novo valor de y: "))
+                    x2=x1.isnumeric()
+                    y2=y1.isnumeric()
+                    if x2==True and y2==True:
+                        print("Mudança feita")
+                        self.x=int(x1)
+                        self.y=int(y1)
+                        break
+                    else:
+                        print("Erro por favor digite novamente os valores")
+            elif self.c=="n":
                 break
             else:
                 print("por favor digite apenas sim ou nao")
-
-                
-            
-                    
-
+        self.ncentrox=self.x + (self.largura/2)
+        self.ncentroy=self.y + (self.altura/2)
+        cabeçalhototal(f"O novo centro do retangulo sao x={self.ncentrox} e y={self.ncentroy}")
+        
 p1=Rentagulo(10,18,3,4)
 p1.info2()
 p1.info1()

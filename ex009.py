@@ -16,7 +16,9 @@ mudana de de nome de utilizador sem exegir nada
 from tkinter import *
 from Cores_e_fontes import *
 class Pograma:
+    
     def __init__(self,raiz1):
+        
         self.fr1=Frame(raiz1,bg=cinza_escuro)
         self.fr1.pack()
         self.fr2=Frame(raiz,bg=cinza_escuro)
@@ -56,7 +58,10 @@ class Pograma:
         self.bt2["relief"]="ridge"
         self.bt2["border"]=5
 
+        
+
     def criar_conta(self):
+        
         self.lb1.pack_forget()
         self.loca1.pack_forget()
         self.loca2.pack_forget()
@@ -90,9 +95,9 @@ class Pograma:
         self.em2.pack(side=LEFT,pady=8)
 
 
-        self.em1=Label(self.fr5,text=f"{'Continente residente:':<70}",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
-        self.em1.pack()
-        self.escolha=StringVar
+        self.con=Label(self.fr5,text=f"{'Continente residente:':<70}",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
+        self.con.pack()
+        self.escolha=StringVar()
 
         self.eur=Radiobutton(self.fr5,text=f"{'Europa':<40}",font=f_butao,value="europa",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.eur.pack()
@@ -106,6 +111,47 @@ class Pograma:
         self.anta.pack()
         self.oc=Radiobutton(self.fr5,text=f"{'Oceania':<40}",font=f_butao,value="oc",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.oc.pack()
+
+        self.erro=Label(self.fr6,text="",bg=cinza_escuro,fg="red",font=f_butao)
+        self.erro.pack()
+
+        self.cc=Button(self.fr6,bg=cinza_claro,text="Criar Conta",font=f_butao,fg=azul_marinho,command=self.criar)
+        self.cc.pack()
+    def criar(self):
+       
+       self.nome=self.nu2.get()
+       self.senha1=self.se2.get()
+       self.senha2=self.se4.get()
+       self.email=self.em2.get()
+       self.continente=self.escolha.get()
+       if len(self.nome)>2 and self.nome not in ("ex009_Logins.py"):
+           if self.senha1==self.senha2:
+               if len(self.senha1)>=8:
+                    if self.senha1.isnumeric()==False and self.senha1.isalpha()==False:
+                        if "@" in self.email and len(self.email)>2:
+                            if self.continente=="europa":
+                                self.arq=open("ex009_Logins.py","a")
+                                self.arq.write=("luis")
+                                self.arq.close()
+                                self.erro["text"]=" "
+                        else:
+                            self.erro["text"]="Por favor digite um email existente"
+                    else:
+                        self.erro["text"]="A sua senha tem de conter letras e numeros"
+               else:
+                   self.erro["text"]="A sua senha tem de ter mais de 8 letras"
+           else:
+               self.erro["text"]="As senhas tenhem de ser iguais,por favor tente novamente"
+       else:
+           self.erro["text"]="Esse nome ja foi registrado, tente outro"
+        
+
+           
+            
+
+
+
+
 
 raiz=Tk()
 janela=Pograma(raiz)

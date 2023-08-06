@@ -99,17 +99,17 @@ class Pograma:
         self.con.pack()
         self.escolha=StringVar()
 
-        self.eur=Radiobutton(self.fr5,text=f"{'Europa':<40}",font=f_butao,value="europa",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
+        self.eur=Radiobutton(self.fr5,text=f"{'Europa':<40}",font=f_butao,value="Europa",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.eur.pack()
-        self.amn=Radiobutton(self.fr5,text=f"{'America do Norte':<34}",font=f_butao,value="amn",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
+        self.amn=Radiobutton(self.fr5,text=f"{'America do Norte':<34}",font=f_butao,value="America do Norte",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.amn.pack()
-        self.ams=Radiobutton(self.fr5,text=f"{'America do Sul':<36}",font=f_butao,value="ams",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
+        self.ams=Radiobutton(self.fr5,text=f"{'America do Sul':<36}",font=f_butao,value="America do Sul",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.ams.pack()
-        self.asia=Radiobutton(self.fr5,text=f"{'Asia':<43}",font=f_butao,value="asia",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
+        self.asia=Radiobutton(self.fr5,text=f"{'Asia':<43}",font=f_butao,value="Asia",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.asia.pack()
-        self.anta=Radiobutton(self.fr5,text=f"{' Antartida    ':<40}",font=f_butao,value="anta",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
+        self.anta=Radiobutton(self.fr5,text=f"{' Antartida    ':<40}",font=f_butao,value="Antartida",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.anta.pack()
-        self.oc=Radiobutton(self.fr5,text=f"{'Oceania':<40}",font=f_butao,value="oc",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
+        self.oc=Radiobutton(self.fr5,text=f"{'Oceania':<40}",font=f_butao,value="Oceânia",variable=self.escolha,bg=cinza_escuro,fg=cinza_claro)
         self.oc.pack()
 
         self.erro=Label(self.fr6,text="",bg=cinza_escuro,fg="red",font=f_butao)
@@ -129,11 +129,22 @@ class Pograma:
                if len(self.senha1)>=8:
                     if self.senha1.isnumeric()==False and self.senha1.isalpha()==False:
                         if "@" in self.email and len(self.email)>2:
-                            if self.continente=="europa":
+                            if self.continente=="Europa" or self.continente=="America do Norte" or self.continente=="America do Sul" or self.continente=="Asia" or self.continente=="Antartida" or self.continente=="Oceânia":
                                 self.arq=open("ex009_Logins.py","a")
-                                self.arq.write=("luis")
+                                self.arq.write(f"\n{self.nome}")
+                                self.arq.write(f"\n{self.continente}")
+                                self.arq.write(f"\n{self.senha1}")
+                                self.arq.write(f"\n{self.email}")
+                                self.arq.close()
+                                self.arq=open("ex009_Logins.py","r")
+                                self.arq1=self.arq.readlines()
+                                
+                                print(self.arq1)
+                                print(self.arq1[1])
                                 self.arq.close()
                                 self.erro["text"]=" "
+                            else:
+                                self.erro["text"]="Por favor escolha um dos continentes"
                         else:
                             self.erro["text"]="Por favor digite um email existente"
                     else:

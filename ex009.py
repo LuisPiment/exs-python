@@ -18,7 +18,7 @@ from Cores_e_fontes import *
 class Pograma:
     
     def __init__(self,raiz1):
-        self.contador=0
+        
         
         self.fr1=Frame(raiz1,bg=cinza_escuro)
         self.fr1.pack()
@@ -227,22 +227,22 @@ class Pograma:
         self.cc=Button(self.fr6,bg=cinza_claro,text="Criar Conta",font=f_butao,fg=azul_marinho,command=self.logar)
         self.cc.pack()
     def logar(self):
+        self.contador=0
 
-
-        self.nome=str(self.nu2.get())
+        self.nome=self.nu2.get()
         self.senha=self.se2.get()
         self.email=self.em2.get()
-        self.opa=open("ex009_Logins.py","r")
-        self.lista=self.opa.readlines()
-        self.opa.close()
+        self.lista= [line.rstrip() for line in open('ex009_Logins.py')]
+        
         
 
-        for self.c in (self.lista):
-            if self.c==self.nome:
-                self.contador+=1
-            print(self.c)
-        print(self.nome)
+        
+        if self.nome in self.lista:
+            self.contador+=1
+        
         print(self.contador)
+        print(self.lista)
+
         if self.contador==1:
             for self.pos,self.c1 in enumerate(self.lista):
                 if self.nome==self.c1:

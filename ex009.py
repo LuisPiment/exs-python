@@ -18,6 +18,7 @@ from Cores_e_fontes import *
 class Pograma:
     
     def __init__(self,raiz1):
+        self.contador=0
         
         self.fr1=Frame(raiz1,bg=cinza_escuro)
         self.fr1.pack()
@@ -45,7 +46,7 @@ class Pograma:
         self.loca2=Label(self.fr1,bg=cinza_escuro,text="",pady=30)
         self.loca2.pack()
 
-        self.bt1=Button(self.fr2,bg=cinza_claro,text="Login",font=f_butao,fg=verde_esmeralda)
+        self.bt1=Button(self.fr2,bg=cinza_claro,text="Login",font=f_butao,fg=verde_esmeralda,command=self.login)
         self.bt1.pack()
         self.bt1["relief"]="ridge"
         self.bt1["border"]=5
@@ -83,8 +84,8 @@ class Pograma:
 
         self.se3=Label(self.fr3,text="Senha:",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
         self.se3.pack(side=LEFT,pady=8)
-        self.se3=Label(self.fr4,text="(obs:As duas tem de ser igual):",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
-        self.se3.pack()
+        self.se5=Label(self.fr4,text="(obs:As duas tem de ser igual):",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
+        self.se5.pack()
         self.se4=Entry(self.fr3,font=f_butao,bg=cinza_claro,fg="white")
         self.se4.pack(side=LEFT,pady=8)
         
@@ -136,12 +137,48 @@ class Pograma:
                                 self.arq.write(f"\n{self.senha1}")
                                 self.arq.write(f"\n{self.email}")
                                 self.arq.close()
-                                self.arq=open("ex009_Logins.py","r")
-                                self.arq1=self.arq.readlines()
-                                
-                                print(self.arq1)
-                                print(self.arq1[1])
-                                self.arq.close()
+                                self.loca4.pack_forget()
+                                self.nu1.pack_forget()
+                                self.nu2.pack_forget()
+                                self.se1.pack_forget()
+                                self.se2.pack_forget()
+                                self.se3.pack_forget()
+                                self.se4.pack_forget()
+                                self.se5.pack_forget()
+                                self.em1.pack_forget()
+                                self.em2.pack_forget()
+                                self.con.pack_forget()
+                                self.eur.pack_forget()
+                                self.amn.pack_forget()
+                                self.ams.pack_forget()
+                                self.asia.pack_forget()
+                                self.anta.pack_forget()
+                                self.oc.pack_forget()
+                                self.nu1.pack_forget()
+                                self.erro.pack_forget()
+                                self.cc.pack_forget()
+                                self.loca1=Label(self.fr1,bg=cinza_escuro,text="",)
+                                self.loca1.pack()
+
+                                self.lb1=Label(self.fr1,bg=cinza_escuro,text="Projeto de Login",font=f_titulo,fg="white",)
+                                self.lb1.pack()
+        
+                                self.loca2=Label(self.fr1,bg=cinza_escuro,text="",pady=30)
+                                self.loca2.pack()
+
+                                self.bt1=Button(self.fr2,bg=cinza_claro,text="Login",font=f_butao,fg=verde_esmeralda)
+                                self.bt1.pack()
+                                self.bt1["relief"]="ridge"
+                                self.bt1["border"]=5
+
+                                self.loca3=Label(self.fr2,bg=cinza_escuro,text="",pady=2)
+                                self.loca3.pack()
+
+                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Criar Conta",font=f_butao,fg=azul_marinho,command=self.criar_conta)
+                                self.bt2.pack()
+                                self.bt2["relief"]="ridge"
+                                self.bt2["border"]=5
+
                                 self.erro["text"]=" "
                             else:
                                 self.erro["text"]="Por favor escolha um dos continentes"
@@ -155,6 +192,83 @@ class Pograma:
                self.erro["text"]="As senhas tenhem de ser iguais,por favor tente novamente"
        else:
            self.erro["text"]="Esse nome ja foi registrado, tente outro"
+    def login(self):
+        self.lb1.pack_forget()
+        self.loca1.pack_forget()
+        self.loca2.pack_forget()
+        self.loca3.pack_forget()
+        self.bt1.pack_forget()
+        self.bt2.pack_forget()
+        self.loca6=Label(self.fr1,bg=cinza_escuro,text=" Introduza os seus dados:",font=f_titulo,pady=30,fg=verde_esmeralda)
+        self.loca6.pack(side=LEFT,pady=20)
+        self.nu1=Label(self.fr2,text="Utilizador:",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
+        self.nu1.pack(side=LEFT,pady=15)
+        self.nu2=Entry(self.fr2,width=20,font=f_butao,bg=cinza_claro,fg="white")
+        self.nu2.pack(side=LEFT,pady=15)
+        self.loca5=Label(self.fr2,bg=cinza_escuro,text="                                             ",)
+        self.loca5.pack(side=LEFT)
+
+        self.se1=Label(self.fr3,text="Senha:",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
+        self.se1.pack(side=LEFT,pady=15)
+        self.se2=Entry(self.fr3,font=f_butao,bg=cinza_claro,fg="white",width=20)
+        self.se2.pack(side=LEFT,pady=15)
+        self.loca4=Label(self.fr3,bg=cinza_escuro,text="                                    ")
+        self.loca4.pack(side=LEFT)
+        
+        self.em1=Label(self.fr4,text="Email:",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
+        self.em1.pack(side=LEFT,pady=15)
+        
+        self.em2=Entry(self.fr4,font=f_butao,bg=cinza_claro,fg="white",width=30)
+        self.em2.pack(side=LEFT,pady=15)
+
+        self.erro=Label(self.fr6,text="",bg=cinza_escuro,fg="red",font=f_butao)
+        self.erro.pack(pady=15)
+
+        self.cc=Button(self.fr6,bg=cinza_claro,text="Criar Conta",font=f_butao,fg=azul_marinho,command=self.logar)
+        self.cc.pack()
+    def logar(self):
+
+
+        self.nome=str(self.nu2.get())
+        self.senha=self.se2.get()
+        self.email=self.em2.get()
+        self.opa=open("ex009_Logins.py","r")
+        self.lista=self.opa.readlines()
+        self.opa.close()
+        
+
+        for self.c in (self.lista):
+            if self.c==self.nome:
+                self.contador+=1
+            print(self.c)
+        print(self.nome)
+        print(self.contador)
+        if self.contador==1:
+            for self.pos,self.c1 in enumerate(self.lista):
+                if self.nome==self.c1:
+                    if self.lista[(self.pos+2)]==self.senha:
+                        if self.lista(self.pos+3)==self.email:
+                            self.erro["text"]="deu certo"
+                        else:
+                            self.erro["text"]="Email errado tente novamente"
+                    else:
+                        self.erro["text"]="Senha incorreta, tente novamente"
+                
+
+        else:
+            self.erro["text"]="Por favor insira um nome valido"
+                        
+                    
+
+                
+        
+
+
+
+
+
+
+
         
 
            

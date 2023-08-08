@@ -257,7 +257,7 @@ class Pograma:
                             if self.nome=="luis9021":
                                 self.loca6["text"]="Funções de ADM"
 
-                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudança de senha",font=f_butao,fg=azul_marinho,command=self.musenha(self.senha))
+                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudança de senha",font=f_butao,fg=azul_marinho,command=self.musenha("9021luis"))
                                 self.bt2.pack()
                                 self.bt2["relief"]="ridge"
                                 self.bt2["border"]=5
@@ -280,7 +280,7 @@ class Pograma:
 
                             else:
                                 self.loca6["text"]="Funções de usuario"
-                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudança de senha",font=f_butao,fg=azul_marinho,padx=15,pady=15,command=self.musenha(self.senha))
+                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudança de senha",font=f_butao,fg=azul_marinho,padx=15,pady=15)
                                 self.bt2.pack()
                                 self.bt2["relief"]="ridge"
                                 self.bt2["border"]=5

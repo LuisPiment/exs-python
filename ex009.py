@@ -166,7 +166,7 @@ class Pograma:
                                 self.loca2=Label(self.fr1,bg=cinza_escuro,text="",pady=30)
                                 self.loca2.pack()
 
-                                self.bt1=Button(self.fr2,bg=cinza_claro,text="Login",font=f_butao,fg=verde_esmeralda)
+                                self.bt1=Button(self.fr2,bg=cinza_claro,text="Login",font=f_butao,fg=verde_esmeralda,command=self.login)
                                 self.bt1.pack()
                                 self.bt1["relief"]="ridge"
                                 self.bt1["border"]=5
@@ -224,7 +224,7 @@ class Pograma:
         self.erro=Label(self.fr6,text="",bg=cinza_escuro,fg="red",font=f_butao)
         self.erro.pack(pady=15)
 
-        self.cc=Button(self.fr6,bg=cinza_claro,text="Criar Conta",font=f_butao,fg=azul_marinho,command=self.logar)
+        self.cc=Button(self.fr6,bg=cinza_claro,text="Logar",font=f_butao,fg=azul_marinho,command=self.logar)
         self.cc.pack()
     def logar(self):
         self.contador=0
@@ -235,20 +235,63 @@ class Pograma:
         self.lista= [line.rstrip() for line in open('ex009_Logins.py')]
         
         
-
-        
         if self.nome in self.lista:
             self.contador+=1
         
-        print(self.contador)
-        print(self.lista)
-
         if self.contador==1:
             for self.pos,self.c1 in enumerate(self.lista):
                 if self.nome==self.c1:
                     if self.lista[(self.pos+2)]==self.senha:
-                        if self.lista(self.pos+3)==self.email:
-                            self.erro["text"]="deu certo"
+                        if self.lista[(self.pos+3)]==self.email:
+                            self.nu2.pack_forget()
+                            self.se2.pack_forget()
+                            self.nu1.pack_forget()
+                            self.se1.pack_forget()
+                            self.em1.pack_forget()
+                            self.em2.pack_forget()
+                            self.erro.pack_forget()
+                            self.loca4.pack_forget()
+                            self.loca5.pack_forget()
+                            self.cc.pack_forget()
+
+                            if self.nome=="luis9021":
+                                self.loca6["text"]="Funções de ADM"
+
+                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudança de senha",font=f_butao,fg=azul_marinho,command=self.musenha(self.senha))
+                                self.bt2.pack()
+                                self.bt2["relief"]="ridge"
+                                self.bt2["border"]=5
+
+                                self.loca4=Label(self.fr3,bg=cinza_escuro,text="                                    ",pady=15)
+                                self.loca4.pack(side=LEFT)
+
+                                self.bt2=Button(self.fr4,bg=cinza_claro,text="Mudanca de email",font=f_butao,fg=azul_marinho)
+                                self.bt2.pack()
+                                self.bt2["relief"]="ridge"
+                                self.bt2["border"]=5
+
+                                self.loca4=Label(self.fr3,bg=cinza_escuro,text="                                    ",pady=15)
+                                self.loca4.pack(side=LEFT)
+
+                                self.bt2=Button(self.fr4,bg=cinza_claro,text="Apagar conta",font=f_butao,fg=azul_marinho)
+                                self.bt2.pack()
+                                self.bt2["relief"]="ridge"
+                                self.bt2["border"]=5
+
+                            else:
+                                self.loca6["text"]="Funções de usuario"
+                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudança de senha",font=f_butao,fg=azul_marinho,padx=15,pady=15,command=self.musenha(self.senha))
+                                self.bt2.pack()
+                                self.bt2["relief"]="ridge"
+                                self.bt2["border"]=5
+
+                                self.loca4=Label(self.fr3,bg=cinza_escuro,text="                                    ",pady=15)
+                                self.loca4.pack(side=LEFT)
+
+                                self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudanca de email",font=f_butao,fg=azul_marinho,padx=15,pady=15)
+                                self.bt2.pack()
+                                self.bt2["relief"]="ridge"
+                                self.bt2["border"]=5
                         else:
                             self.erro["text"]="Email errado tente novamente"
                     else:
@@ -257,6 +300,43 @@ class Pograma:
 
         else:
             self.erro["text"]="Por favor insira um nome valido"
+
+
+
+
+
+                            
+    def musenha(self,senha):
+        self.se1=Label(self.fr2,text="Senha:",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
+        self.se1.pack(side=LEFT,pady=20)
+        self.se2=Entry(self.fr2,font=f_butao,bg=cinza_claro,fg="white",width=20)
+        self.se2.pack(side=LEFT,pady=20)
+
+        self.se3=Label(self.fr3,text="Senha:",font=f_butao,bg=cinza_escuro,fg=cinza_claro)
+        self.se3.pack(side=LEFT,pady=8)
+        self.se4=Entry(self.fr3,font=f_butao,bg=cinza_claro,fg="white")
+        self.se4.pack(side=LEFT,pady=8)
+
+        self.bt2=Button(self.fr2,bg=cinza_claro,text="Mudar",font=f_butao,fg=azul_marinho,padx=15,pady=15,command=self.mudar(senha,self.se2))
+        self.bt2.pack()
+        self.bt2["relief"]="ridge"
+        self.bt2["border"]=5
+
+        self.erro=Label(self.fr3,text="",font=f_butao,bg=cinza_escuro,fg="red")
+        self.erro.pack()
+
+    def mudar(self,senha_ant,senhaatt):
+        if self.se2==self.se4:
+            for pos,c in enumerate(self.lista):
+                if c==senha_ant:
+                    self.lista[pos]=senhaatt
+        else:
+            self.erro["text"]="As senha tenhem de ser iguais"
+
+                                
+
+
+
                         
                     
 

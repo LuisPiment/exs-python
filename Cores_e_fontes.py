@@ -4,4 +4,6 @@ cinza_escuro="#212121"
 verde_esmeralda="#287233"
 f_titulo=("ARIAL",30,"bold")
 f_butao=("ARIAL",15,"bold")
+f_txtgrande=("ARIAL",23,"bold")
+f_titulogrande=("ARIAL",40,"bold")
 

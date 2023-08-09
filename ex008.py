@@ -1,14 +1,12 @@
-arq1=open("foda.py","r")
-arq=arq1.readlines()
-arq.append("luis")
-arq1.close()
-print(arq)
-print(arq1.read)
+with open("teste.txt") as file:
+    contents = file.read()
+    contents = contents.replace("Portugal", "")
+with open("teste.txt", "w") as file:
+    file.write(contents)
 
 
 
 
 
-"""arq=open("foda.txt","a")
-arq.write("luis")
-arq.close()"""
+
+

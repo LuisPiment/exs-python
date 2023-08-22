@@ -1,9 +1,9 @@
-from dataclasses import dataclass
-@dataclass
-class Hmm:
-    nome:str
-    age:int
-    code:int
-    hmm:str
-idiota=Hmm("luis",90,9820198,"foda")
-print(idiota)
+from fastapi import FastAPI
+
+app=FastAPI()
+
+@app.get("/")
+
+async def top():
+    return("Foi um bom começo 22/08/2023")
+

@@ -32,12 +32,13 @@ def animal2(id1):
     for c in lista:
         for a in c:
             print(a)
-            print("hmmmmmmmm")
+            print("-"*30)
             print(id1)
+            print("*"*30)
             if a == id1:
                 print("deu certo")
                 info.append(lista[c][:])
                 print(info)
             else:
                 print("deu errado")
-    print(lista)
+                print("*"*30)

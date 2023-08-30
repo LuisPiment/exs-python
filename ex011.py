@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from random import randint
+from Ferramentas import *
 animal=[]
 lista=[]
-info=[]
+
 animais=FastAPI()
+
 class Cadas(BaseModel):
     nome:str
     idade:int
@@ -29,16 +31,30 @@ def lista1():
 
 @animais.get("/animais/{id1}")
 def animal2(id1):
-    for c in lista:
-        for a in c:
-            print(a)
-            print("-"*30)
-            print(id1)
-            print("*"*30)
-            if a == id1:
-                print("deu certo")
-                info.append(lista[c][:])
-                print(info)
-            else:
-                print("deu errado")
-                print("*"*30)
+    for v,c in enumerate(lista):
+        if c[0] == int(id1):
+           return(f"Os dados do seu animal sao os seguintes:"  
+                  f"  Nome:{c[1]}"  
+                  f"  Idade:{c[2]}"
+                  f"  Sexo:{c[3]}"
+                  f"  Cor:{c[4]}")
+    
+
+        if (len(lista)-1)==v:
+            if c[0]!= int(id1):
+                return(f"O id do seu animal n foi encontrado no sistema,Por favor tente novamente")
+            
+
+@animais.delete("/animais/{id1}")
+def animal3(id1):
+    for v,c in enumerate(lista):
+
+        if c[0] == int(id1):
+           lista.pop(v)
+           return("Animal apagado do sistema com sucesso")
+    
+
+        if (len(lista)-1)==v:
+            if c[0]!= int(id1):
+                return(f"O id do seu animal n foi encontrado no sistema,Por favor tente novamente")
+            S

@@ -32,39 +32,44 @@ consulta9=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome LIKE 'r____%'").
 print(consulta9)
 consulta10=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome LIKE 'r%o'").fetchall()
 print(consulta10)
-"""
-"""
 consulta=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome IN ('rosa','rodrigo')").fetchall()
 print(consulta)
 consulta1=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Idade<16 AND NOT Cor='Roxo' ").fetchall()
 print(consulta1)
 consulta2=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome ='rodrigo' or Nome='rosa'").fetchall()
 print(consulta2)
-"""
-"""
 consulta=Cursor.execute("SELECT * FROM Minha_Tabela Order by Idade").fetchall()
 print(consulta)
 consulta1=Cursor.execute("SELECT * FROM Minha_Tabela Order by Idade,Nome").fetchall()
 print(consulta1)
 consulta2=Cursor.execute("SELECT * FROM Minha_Tabela Order by Idade DESC").fetchall()
 print(consulta2)
-"""
-"""
 consulta=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome is NULL").fetchall()
 print(consulta)
 consulta1=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Idade is not NULL").fetchall()
-print(consulta1)"""
-
+print(consulta1)
 consulta1=Cursor.execute("UPDATE Minha_Tabela SET Nome='Francisco ' WHERE Cor= 'azul' ").fetchall()
 consulta3=Cursor.execute("UPDATE Minha_Tabela SET Idade=19 WHERE Idade is NULL ").fetchall()
 consulta2=Cursor.execute("UPDATE Minha_Tabela SET Nome='Dulce' WHERE Nome is Null ").fetchall()
 consulta4=Cursor.execute("UPDATE Minha_Tabela SET Cor='verde' WHERE Cor is Null ").fetchall()
-
 consulta5=Cursor.execute("DELETE FROM Minha_Tabela where nome is 'rosa'").fetchall()
-
-
-"""consulta=Cursor.execute("SELECT * FROM Minha_Tabela LIMIT 3 ").fetchall()
+consulta=Cursor.execute("SELECT * FROM Minha_Tabela LIMIT 3 ").fetchall()
 for c in consulta:
-   print(c)"""
+   print(c)
+Cursor.execute("CREATE TABLE CADASTRO (id real,nome text)")
+Conexao.commit()
+Cursor.execute("CREATE TABLE VENDAS (id real,vendas real)")
+Conexao.commit()
 consulta=Cursor.execute("SELECT count(Idade) FROM Minha_Tabela LIMIT 3 ").fetchall()
 print(consulta)
+"""
+Cursor.execute("INSERT INTO CADASTRO VALUES(1,'Rodrigo')")
+Cursor.execute("INSERT INTO CADASTRO VALUES(2,'Luis')")
+Cursor.execute("INSERT INTO CADASTRO VALUES(3,'Sofia')")
+Cursor.execute("INSERT INTO VENDAS VALUES(1,200)")
+Cursor.execute("INSERT INTO VENDAS VALUES(1,150)")
+Cursor.execute("INSERT INTO VENDAS VALUES(2,300)")
+Consulta6=Cursor.execute("""SELECT * FROM VENDAS FULL OUTER JOIN CADASTRO ON CADASTRO.id=VENDAS.id""").fetchall()
+for c in Consulta6:
+   print(c)
+

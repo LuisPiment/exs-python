@@ -9,11 +9,9 @@ Cursor.execute("INSERT INTO Minha_Tabela Values('rodrigo',14,'Roxo')")
 Cursor.execute("INSERT INTO Minha_Tabela Values(null,12,'azul')")
 Cursor.execute("INSERT INTO Minha_Tabela Values('carolina',null,null)")
 Cursor.execute("INSERT INTO Minha_Tabela Values(null,null,'roxo')")
-
 #consulta=Cursor.execute("SELECT * FROM Minha_Tabela  ").fetchall()
 #for c in consulta:
  #   print(c)
-
 """
 consulta=Cursor.execute("Select * FROM Minha_Tabela WHERE Nome='rosa'").fetchall()
 print(consulta)
@@ -26,10 +24,6 @@ print(consulta3)
 consulta4=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Idade BETWEEN 12 AND 16").fetchall()
 print(consulta4)
 print(" ")
-consulta5=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome LIKE 'r%'").fetchall()
-print(consulta5)
-consulta6=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome LIKE '%a'").fetchall()
-print(consulta6)
 consulta7=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome LIKE '%ro%'").fetchall()
 print(consulta7)
 consulta8=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome LIKE '_o%'").fetchall()
@@ -42,22 +36,16 @@ print(consulta10)
 """
 consulta=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome IN ('rosa','rodrigo')").fetchall()
 print(consulta)
-
-
 consulta1=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Idade<16 AND NOT Cor='Roxo' ").fetchall()
 print(consulta1)
-
-
 consulta2=Cursor.execute("SELECT * FROM Minha_Tabela WHERE Nome ='rodrigo' or Nome='rosa'").fetchall()
 print(consulta2)
 """
 """
 consulta=Cursor.execute("SELECT * FROM Minha_Tabela Order by Idade").fetchall()
 print(consulta)
-
 consulta1=Cursor.execute("SELECT * FROM Minha_Tabela Order by Idade,Nome").fetchall()
 print(consulta1)
-
 consulta2=Cursor.execute("SELECT * FROM Minha_Tabela Order by Idade DESC").fetchall()
 print(consulta2)
 """

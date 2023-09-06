@@ -9,7 +9,7 @@ import sqlite3
 class Produto(BaseModel):
     id: Optional [int]=randint(100,999) 
     nome_Prod: str
-    vendedor:Usuario
+    vendedor:List[Usuario]
     detalhes: str
     preço:float
     disponivel: bool =False

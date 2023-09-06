@@ -1,35 +1,20 @@
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
-from typing import Optional,List
-from random import randint
-import sqlite3
+from typing import Union
+app=FastAPI()
+class Toma(BaseModel):
+    Nome:str
+    idade:int =None
+    cidade: Union[str,None]=None
 
+@app.get("/items")
+def root(largura:int =0, comprimento:int =0, altura:int =Query(default=None, max_digits=50)):
+    area=largura*comprimento
+    if altura!=0:
+        volume=comprimento*altura*largura
+        return(f"A area é {area} e o volume é {volume}")
+    return(f"A area é {area}")
 
-
-
-class Produto(BaseModel):
-    id: Optional [int]=randint(100,999) 
-    nome_Prod: str
-    vendedor:List[Usuario]
-    detalhes: str
-    preço:float
-    disponivel: bool =False
-
-
-class Pedido(BaseModel):
-    id: Optional [int]=randint(100,999) 
-    produto:Produto
-    comprador:Usuario
-    quantidade: int
-    status_entrega:bool=False
-    destinho: str
-
-class Usuario(BaseModel):
-    id: Optional [int]=randint(100,999) 
-    nome: str 
-    idade: int
-    email: str
-    pedidos: List[Pedido]
-    produtos_a_venda: List[Produto]
-    minhas_vendas: List[Pedido]
-    telefone: str
-
+@app.post("/pessoa")
+def dalhe(hmm:Toma):
+    return hmm

@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query,Body
 from pydantic import BaseModel
-from typing import Union
+from typing import Union,List
 app=FastAPI()
 class Toma(BaseModel):
     Nome:str
@@ -8,13 +8,10 @@ class Toma(BaseModel):
     cidade: Union[str,None]=None
 
 @app.get("/items")
-def root(largura:int =0, comprimento:int =0, altura:int =Query(default=None, max_digits=50)):
+def root(largura:int =0, comprimento:int =Query(gt=50,lt=90) ):
     area=largura*comprimento
-    if altura!=0:
-        volume=comprimento*altura*largura
-        return(f"A area é {area} e o volume é {volume}")
-    return(f"A area é {area}")
+    return(f"A area é {area} e os nomes são ")
 
 @app.post("/pessoa")
-def dalhe(hmm:Toma):
-    return hmm
+def caminho(toma:Toma,lingundo:int =Body()):
+    return(f"Deu certo")
